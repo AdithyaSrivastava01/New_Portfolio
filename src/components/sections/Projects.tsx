@@ -1,29 +1,17 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Github, ExternalLink, Filter } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 import { projects } from '../../data/portfolio';
 import { Project } from '../../types';
 import { Button } from '../ui/Button';
 
-const categories = [
-  { id: 'all', label: 'All Projects' },
-  { id: 'ml', label: 'Machine Learning' },
-  { id: 'web', label: 'Web Development' },
-  { id: 'mobile', label: 'Mobile' },
-  { id: 'other', label: 'Other' }
-];
-
 export const Projects: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const filteredProjects = activeCategory === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,13 +35,7 @@ export const Projects: React.FC = () => {
   };
 
   const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => (
-    <motion.div
-      layout
-      variants={itemVariants}
-      className="bg-white dark:bg-dark-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="bg-white dark:bg-dark-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Project Image */}
       <div className="relative h-40 sm:h-48 lg:h-56 bg-gradient-to-br from-primary-100 to-blue-100 dark:from-primary-900 dark:to-blue-900 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
@@ -83,7 +65,7 @@ export const Projects: React.FC = () => {
         {/* Technologies */}
         <div className="mb-4 sm:mb-6">
           <div className="flex flex-wrap gap-2">
-            {project.technologies.slice(0, 4).map((tech) => (
+            {(expandedProject === project.id ? project.technologies : project.technologies.slice(0, 4)).map((tech) => (
               <span
                 key={tech}
                 className="px-2 py-1 bg-gray-100 dark:bg-dark-900 text-gray-700 dark:text-gray-300 rounded text-sm"
@@ -91,10 +73,21 @@ export const Projects: React.FC = () => {
                 {tech}
               </span>
             ))}
-            {project.technologies.length > 4 && (
-              <span className="px-2 py-1 text-gray-500 dark:text-gray-400 text-sm">
+            {project.technologies.length > 4 && expandedProject !== project.id && (
+              <button
+                onClick={() => setExpandedProject(project.id)}
+                className="px-2 py-1 text-primary-600 dark:text-primary-400 text-sm font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded transition-colors"
+              >
                 +{project.technologies.length - 4} more
-              </span>
+              </button>
+            )}
+            {expandedProject === project.id && project.technologies.length > 4 && (
+              <button
+                onClick={() => setExpandedProject(null)}
+                className="px-2 py-1 text-primary-600 dark:text-primary-400 text-sm font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded transition-colors"
+              >
+                show less
+              </button>
             )}
           </div>
         </div>
@@ -126,7 +119,7 @@ export const Projects: React.FC = () => {
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 
   return (
@@ -148,38 +141,14 @@ export const Projects: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Category Filter */}
-          <motion.div className="flex justify-center mb-8 sm:mb-12 px-4" variants={itemVariants}>
-            <div className="bg-white dark:bg-dark-900 rounded-xl p-2 shadow-lg max-w-full overflow-x-auto">
-              <div className="flex gap-2 min-w-max">
-                {categories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setActiveCategory(category.id)}
-                    className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                      activeCategory === category.id
-                        ? 'bg-primary-600 text-white shadow-md'
-                        : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-800'
-                    }`}
-                  >
-                    <span className="flex items-center gap-1 sm:gap-2">
-                      {category.id === 'all' && <Filter size={14} className="sm:w-4 sm:h-4" />}
-                      <span className="hidden sm:inline">{category.label}</span>
-                      <span className="sm:hidden">{category.label.split(' ')[0]}</span>
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
           {/* Projects Grid */}
-          <motion.div layout className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            <AnimatePresence mode="wait">
-              {filteredProjects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} index={index} />
-              ))}
-            </AnimatePresence>
+          <motion.div 
+            className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
+            variants={itemVariants}
+          >
+            {projects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
           </motion.div>
 
           {/* Show more projects link */}

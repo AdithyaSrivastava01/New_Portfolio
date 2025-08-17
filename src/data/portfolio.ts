@@ -86,33 +86,13 @@ export const projects: Project[] = [
   },
   {
     id: '3',
-    title: 'cECG Signal Reliability using Pose Estimation',
-    description: 'Non-intrusive health monitoring system for smart home patients. Incorporated pose estimation to track patient movements and created correlation between movements and signal noise to test ECG signal reliability.',
-    technologies: ['Python', 'OpenPifPaf', 'MATLAB', 'Computer Vision'],
-    githubUrl: 'https://github.com/AdithyaSrivastava01/ECG_signalfilter',
-    image: '/projects/ecg-signal.jpg',
-    category: 'ml',
-    featured: true
-  },
-  {
-    id: '4',
-    title: 'Brain Tumor Analysis',
-    description: 'Classification system for pathologically confirmed Brain Tumor scans into grades G1-G4. Implemented transfer learning, early stopping, and OCR for text removal. Achieved 80% accuracy with ResNet50.',
-    technologies: ['TensorFlow', 'Scikit-learn', 'Keras-OCR', 'ResNet50', 'Computer Vision'],
-    githubUrl: 'https://github.com/AdithyaSrivastava01/BrainTumor_analysis',
-    image: '/projects/brain-tumor.jpg',
-    category: 'ml',
-    featured: false
-  },
-  {
-    id: '5',
     title: 'CIFAR10 Analysis',
     description: 'Deep learning analysis of CIFAR10 dataset using CNN with learning rate scheduler and gradient clipping. Developed custom ResNet model using residual network fundamentals.',
     technologies: ['PyTorch', 'Computer Vision', 'Scikit-learn', 'CNN'],
     githubUrl: 'https://github.com/AdithyaSrivastava01/CIFAR10',
     image: '/projects/cifar10.jpg',
     category: 'ml',
-    featured: false
+    featured: true
   }
 ];
 
