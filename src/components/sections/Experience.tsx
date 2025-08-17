@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MapPin, Calendar, ExternalLink } from 'lucide-react';
+import { MapPin, Calendar } from 'lucide-react';
 import { experiences } from '../../data/portfolio';
 
 export const Experience: React.FC = () => {
@@ -9,6 +9,11 @@ export const Experience: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -73,8 +78,7 @@ export const Experience: React.FC = () => {
                           {experience.title}
                         </h3>
                         <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 text-gray-600 dark:text-gray-300">
-                          <span className="font-semibold text-primary-600 dark:text-primary-400 flex items-center gap-1">
-                            <ExternalLink size={16} />
+                          <span className="font-semibold text-primary-600 dark:text-primary-400">
                             {experience.company}
                           </span>
                           <span className="flex items-center gap-1">
@@ -137,14 +141,14 @@ export const Experience: React.FC = () => {
               <p className="text-lg mb-6 opacity-90">
                 I'm always open to discussing new opportunities and innovative projects.
               </p>
-              <motion.a
-                href="#contact"
+              <motion.button
+                onClick={scrollToContact}
                 className="inline-flex items-center px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Let's Connect
-              </motion.a>
+              </motion.button>
             </div>
           </motion.div>
         </motion.div>

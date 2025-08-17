@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Github, ExternalLink } from 'lucide-react';
 import { projects } from '../../data/portfolio';
 import { Project } from '../../types';
 import { Button } from '../ui/Button';
+import { useExpansion } from '../../contexts/ExpansionContext';
 
 export const Projects: React.FC = () => {
-  const [expandedProject, setExpandedProject] = useState<string | null>(null);
+  const { expandedProjects, toggleExpandedProject } = useExpansion();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -65,7 +66,7 @@ export const Projects: React.FC = () => {
         {/* Technologies */}
         <div className="mb-4 sm:mb-6">
           <div className="flex flex-wrap gap-2">
-            {(expandedProject === project.id ? project.technologies : project.technologies.slice(0, 4)).map((tech) => (
+            {(expandedProjects.includes(project.id) ? project.technologies : project.technologies.slice(0, 4)).map((tech) => (
               <span
                 key={tech}
                 className="px-2 py-1 bg-gray-100 dark:bg-dark-900 text-gray-700 dark:text-gray-300 rounded text-sm"
@@ -73,17 +74,17 @@ export const Projects: React.FC = () => {
                 {tech}
               </span>
             ))}
-            {project.technologies.length > 4 && expandedProject !== project.id && (
+            {project.technologies.length > 4 && !expandedProjects.includes(project.id) && (
               <button
-                onClick={() => setExpandedProject(project.id)}
+                onClick={() => toggleExpandedProject(project.id)}
                 className="px-2 py-1 text-primary-600 dark:text-primary-400 text-sm font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded transition-colors"
               >
                 +{project.technologies.length - 4} more
               </button>
             )}
-            {expandedProject === project.id && project.technologies.length > 4 && (
+            {expandedProjects.includes(project.id) && project.technologies.length > 4 && (
               <button
-                onClick={() => setExpandedProject(null)}
+                onClick={() => toggleExpandedProject(project.id)}
                 className="px-2 py-1 text-primary-600 dark:text-primary-400 text-sm font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded transition-colors"
               >
                 show less

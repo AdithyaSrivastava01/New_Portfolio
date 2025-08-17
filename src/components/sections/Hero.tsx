@@ -4,6 +4,10 @@ import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 export const Hero: React.FC = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -91,7 +95,7 @@ export const Hero: React.FC = () => {
               transition={{ delay: 0.8 }}
             >
               <Button
-                href="#contact"
+                onClick={scrollToContact}
                 size="lg"
                 className="inline-flex items-center gap-2"
               >

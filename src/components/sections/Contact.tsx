@@ -202,7 +202,10 @@ export const Contact: React.FC = () => {
                     <input
                       type="text"
                       id="name"
-                      {...register('name', { required: 'Name is required' })}
+                      {...register('name', { 
+                        required: 'Name is required',
+                        validate: value => value.trim().length > 0 || 'Name cannot be just spaces'
+                      })}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                       placeholder="Your name"
                     />
@@ -224,6 +227,7 @@ export const Contact: React.FC = () => {
                       id="email"
                       {...register('email', {
                         required: 'Email is required',
+                        validate: value => value.trim().length > 0 || 'Email cannot be just spaces',
                         pattern: {
                           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                           message: 'Invalid email address',
@@ -248,7 +252,10 @@ export const Contact: React.FC = () => {
                     <input
                       type="text"
                       id="subject"
-                      {...register('subject', { required: 'Subject is required' })}
+                      {...register('subject', { 
+                        required: 'Subject is required',
+                        validate: value => value.trim().length > 0 || 'Subject cannot be just spaces'
+                      })}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                       placeholder="What's this about?"
                     />
@@ -268,7 +275,10 @@ export const Contact: React.FC = () => {
                     <textarea
                       id="message"
                       rows={5}
-                      {...register('message', { required: 'Message is required' })}
+                      {...register('message', { 
+                        required: 'Message is required',
+                        validate: value => value.trim().length > 0 || 'Message cannot be just spaces'
+                      })}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-vertical"
                       placeholder="Tell me about your project, idea, or just say hello!"
                     />

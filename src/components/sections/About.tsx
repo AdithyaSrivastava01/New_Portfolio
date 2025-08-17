@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { GraduationCap, Award, Code2, Brain } from 'lucide-react';
 import { education } from '../../data/portfolio';
+import { useExpansion } from '../../contexts/ExpansionContext';
 
 export const About: React.FC = () => {
-  const [expandedEducation, setExpandedEducation] = useState<string | null>(null);
+  const { expandedEducation, toggleExpandedEducation } = useExpansion();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -126,7 +127,7 @@ export const About: React.FC = () => {
                       </p>
                       {edu.courses && (
                         <div className="flex flex-wrap gap-2">
-                          {(expandedEducation === edu.id ? edu.courses : edu.courses.slice(0, 3)).map((course) => (
+                          {(expandedEducation.includes(edu.id) ? edu.courses : edu.courses.slice(0, 3)).map((course) => (
                             <span
                               key={course}
                               className="px-2 py-1 bg-gray-100 dark:bg-dark-800 text-gray-700 dark:text-gray-300 rounded text-xs sm:text-sm"
@@ -134,17 +135,17 @@ export const About: React.FC = () => {
                               {course}
                             </span>
                           ))}
-                          {edu.courses.length > 3 && expandedEducation !== edu.id && (
+                          {edu.courses.length > 3 && !expandedEducation.includes(edu.id) && (
                             <button
-                              onClick={() => setExpandedEducation(edu.id)}
+                              onClick={() => toggleExpandedEducation(edu.id)}
                               className="px-2 py-1 text-primary-600 dark:text-primary-400 text-xs sm:text-sm font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded transition-colors"
                             >
                               +{edu.courses.length - 3} more
                             </button>
                           )}
-                          {expandedEducation === edu.id && edu.courses.length > 3 && (
+                          {expandedEducation.includes(edu.id) && edu.courses.length > 3 && (
                             <button
-                              onClick={() => setExpandedEducation(null)}
+                              onClick={() => toggleExpandedEducation(edu.id)}
                               className="px-2 py-1 text-primary-600 dark:text-primary-400 text-xs sm:text-sm font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded transition-colors"
                             >
                               show less

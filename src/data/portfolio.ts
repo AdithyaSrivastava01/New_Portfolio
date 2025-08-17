@@ -45,7 +45,7 @@ export const experiences: Experience[] = [
 
 export const education: Education[] = [
   {
-    id: '1',
+    id: 'edu-1',
     degree: 'Master of Science, Computer Science/Computer Engineering',
     institution: 'University of Southern California',
     location: 'Los Angeles, United States',
@@ -53,7 +53,7 @@ export const education: Education[] = [
     courses: ['Computer Networks', 'Machine Learning-I', 'Analysis of Algorithms', 'Probability', 'Linear Algebra']
   },
   {
-    id: '2',
+    id: 'edu-2',
     degree: 'Bachelor of Technology, Computer Science and Engineering',
     institution: 'National Institute of Technology Hamirpur',
     location: 'Hamirpur, India',
@@ -64,7 +64,7 @@ export const education: Education[] = [
 
 export const projects: Project[] = [
   {
-    id: '1',
+    id: 'proj-1',
     title: 'MedQueryAI',
     description: 'RAG-based Medical Query Assistant incorporating Pinecone for vector search, HuggingFace sentence transformers for embedding 1600 medical documents, & OpenAI API for LLM integration. Features real-time web application with Flask, achieving <2 second response times.',
     technologies: ['Python', 'Pinecone', 'LangChain', 'HuggingFace', 'Flask', 'AWS', 'GitHub Actions'],
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     featured: true
   },
   {
-    id: '2',
+    id: 'proj-2',
     title: 'MERN Shop',
     description: 'Full-stack e-commerce platform using the MERN stack with Redux Toolkit for global state management & Material UI for responsive interface. Features optimized product catalog, order management system, and JWT authentication.',
     technologies: ['JavaScript', 'MongoDB', 'Express.js', 'React', 'Node.js', 'Redux', 'JWT', 'Material UI'],
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     featured: true
   },
   {
-    id: '3',
+    id: 'proj-3',
     title: 'CIFAR10 Analysis',
     description: 'Deep learning analysis of CIFAR10 dataset using CNN with learning rate scheduler and gradient clipping. Developed custom ResNet model using residual network fundamentals.',
     technologies: ['PyTorch', 'Computer Vision', 'Scikit-learn', 'CNN'],

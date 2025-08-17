@@ -7,15 +7,20 @@ export const Footer: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', sectionId: 'home' },
+    { label: 'About', sectionId: 'about' },
+    { label: 'Experience', sectionId: 'experience' },
+    { label: 'Projects', sectionId: 'projects' },
+    { label: 'Skills', sectionId: 'skills' },
+    { label: 'Contact', sectionId: 'contact' },
   ];
 
   const socialLinks = [
@@ -77,12 +82,12 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-primary-400 transition-colors"
+                  <button
+                    onClick={() => scrollToSection(link.sectionId)}
+                    className="text-gray-400 hover:text-primary-400 transition-colors text-left"
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
