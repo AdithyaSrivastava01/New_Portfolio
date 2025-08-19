@@ -58,13 +58,13 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection }) => {
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-primary-600 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm sm:text-lg">A</span>
+            <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 bg-gradient-to-r from-primary-600 to-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm xs:text-base sm:text-lg">A</span>
             </div>
             <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white hidden sm:block">
               Adithya Srivastava
             </span>
-            <span className="text-lg font-bold text-gray-900 dark:text-white sm:hidden">
+            <span className="text-base xs:text-lg font-bold text-gray-900 dark:text-white xs:block sm:hidden">
               Adithya
             </span>
           </motion.div>

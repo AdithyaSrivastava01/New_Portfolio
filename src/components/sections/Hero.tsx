@@ -10,7 +10,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 xs:pt-20 sm:pt-0">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-blue-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900" />
       
@@ -44,8 +44,8 @@ export const Hero: React.FC = () => {
         />
       </div>
 
-      <div className="container-max section-padding relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="container-max section-padding-xs relative z-10">
+        <div className="grid lg:grid-cols-2 gap-6 xs:gap-8 lg:gap-12 items-center">
           {/* Text Content */}
           <motion.div
             className="text-center lg:text-left"
@@ -59,13 +59,13 @@ export const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="text-primary-600 dark:text-primary-400 font-medium text-lg mb-4 block">
+              <span className="text-primary-600 dark:text-primary-400 font-medium text-base xs:text-lg mb-2 xs:mb-4 block">
                 Hello, I'm
               </span>
             </motion.div>
 
             <motion.h1
-              className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6"
+              className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-3 xs:mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -75,7 +75,7 @@ export const Hero: React.FC = () => {
             </motion.h1>
 
             <motion.p
-              className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0"
+              className="text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-4 xs:mb-6 sm:mb-8 leading-relaxed px-2 xs:px-1 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
@@ -89,7 +89,7 @@ export const Hero: React.FC = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 px-2 sm:px-0"
+              className="flex flex-col xs:flex-col sm:flex-row gap-3 sm:gap-4 mb-4 xs:mb-6 sm:mb-8 px-2 xs:px-1 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
@@ -115,7 +115,7 @@ export const Hero: React.FC = () => {
             </motion.div>
 
             <motion.div
-              className="flex justify-center lg:justify-start space-x-4 sm:space-x-6 px-2 sm:px-0"
+              className="flex justify-center lg:justify-start space-x-3 xs:space-x-4 sm:space-x-6 px-2 xs:px-1 sm:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.0 }}
@@ -145,14 +145,14 @@ export const Hero: React.FC = () => {
 
           {/* Profile Image */}
           <motion.div
-            className="flex justify-center lg:justify-end"
+            className="flex justify-center lg:justify-end mt-6 xs:mt-8 lg:mt-0"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
             <div className="relative">
               <motion.div
-                className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary-400 to-blue-600 p-2"
+                className="w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary-400 to-blue-600 p-2"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 whileHover={{ scale: 1.05 }}
@@ -169,19 +169,19 @@ export const Hero: React.FC = () => {
               
               {/* Floating Elements */}
               <motion.div
-                className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center"
+                className="absolute -top-1 -right-1 xs:-top-2 xs:-right-2 sm:-top-4 sm:-right-4 w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                <span className="text-xl sm:text-2xl">🚀</span>
+                <span className="text-lg xs:text-xl sm:text-2xl">🚀</span>
               </motion.div>
               
               <motion.div
-                className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-14 h-14 sm:w-20 sm:h-20 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center"
+                className="absolute -bottom-1 -left-1 xs:-bottom-2 xs:-left-2 sm:-bottom-4 sm:-left-4 w-12 h-12 xs:w-14 xs:h-14 sm:w-20 sm:h-20 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, delay: 1 }}
               >
-                <span className="text-xl sm:text-2xl">💡</span>
+                <span className="text-lg xs:text-xl sm:text-2xl">💡</span>
               </motion.div>
             </div>
           </motion.div>

@@ -121,19 +121,19 @@ export const Contact: React.FC = () => {
           animate={inView ? "visible" : "hidden"}
         >
           {/* Section Header */}
-          <motion.div className="text-center mb-16" variants={itemVariants}>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <motion.div className="text-center mb-12 xs:mb-16" variants={itemVariants}>
+            <h2 className="text-3xl xs:text-4xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
               Get In <span className="text-gradient">Touch</span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg xs:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4 xs:px-0">
               Let's connect and discuss opportunities, collaborations, or just have a chat about technology
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
+          <div className="grid lg:grid-cols-2 gap-6 xs:gap-8 lg:gap-16">
             {/* Contact Information */}
             <motion.div variants={itemVariants}>
-              <div className="bg-white dark:bg-dark-900 rounded-xl p-8 shadow-lg">
+              <div className="bg-white dark:bg-dark-900 rounded-xl p-6 xs:p-8 shadow-lg">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   Let's Connect
                 </h3>
@@ -202,7 +202,7 @@ export const Contact: React.FC = () => {
 
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
-              <div className="bg-white dark:bg-dark-900 rounded-xl p-8 shadow-lg">
+              <div className="bg-white dark:bg-dark-900 rounded-xl p-6 xs:p-8 shadow-lg">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   Send a Message
                 </h3>
@@ -305,11 +305,11 @@ export const Contact: React.FC = () => {
                   </div>
 
                   {/* Submit Button */}
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col xs:flex-col sm:flex-row gap-3">
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-1 justify-center gap-2"
+                      className="w-full xs:flex-1 justify-center gap-2"
                       size="lg"
                     >
                       {isSubmitting ? (
@@ -328,7 +328,7 @@ export const Contact: React.FC = () => {
                     <Button
                       type="button"
                       variant="outline"
-                      className="flex-1 justify-center gap-2"
+                      className="w-full xs:flex-1 justify-center gap-2"
                       size="lg"
                       onClick={() => {
                         const formData = new FormData(document.querySelector('form') as HTMLFormElement);
