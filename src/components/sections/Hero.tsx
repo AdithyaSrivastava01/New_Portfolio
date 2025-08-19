@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import { Button } from '../ui/Button';
-import profileImage from '../../assets/images/about_profile.webp';
 
 export const Hero: React.FC = () => {
   const scrollToContact = () => {
@@ -161,7 +160,7 @@ export const Hero: React.FC = () => {
               >
                 <div className="w-full h-full rounded-full bg-white dark:bg-dark-800 p-3 sm:p-4">
                   <img
-                    src={profileImage}
+                    src="/New_Portfolio/images/about_profile.webp"
                     alt="Adithya Srivastava"
                     className="w-full h-full object-cover rounded-full"
                   />

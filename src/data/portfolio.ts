@@ -1,7 +1,4 @@
 import { Project, Experience, Education, Skill } from '../types';
-import MedQueryAI from '../assets/images/MedQueryAI.png';
-import MERNShop from '../assets/images/MERNShop.png';
-import CIFARImage from '../assets/images/CIFAR_new.jpg';
 
 export const experiences: Experience[] = [
   {
@@ -72,7 +69,7 @@ export const projects: Project[] = [
     description: 'RAG-based Medical Query Assistant incorporating Pinecone for vector search, HuggingFace sentence transformers for embedding 1600 medical documents, & OpenAI API for LLM integration. Features real-time web application with Flask, achieving <2 second response times.',
     technologies: ['Python', 'Pinecone', 'LangChain', 'HuggingFace', 'Flask', 'AWS', 'GitHub Actions'],
     githubUrl: 'https://github.com/AdithyaSrivastava01/Medical_Care',
-    image: MedQueryAI,
+    image: '/New_Portfolio/images/MedQueryAI.png',
     category: 'ml',
     featured: true
   },
@@ -83,7 +80,7 @@ export const projects: Project[] = [
     technologies: ['JavaScript', 'MongoDB', 'Express.js', 'React', 'Node.js', 'Redux', 'JWT', 'Material UI'],
     githubUrl: 'https://github.com/AdithyaSrivastava01/MERN-Ecommerce',
     liveUrl: 'https://mern-ecommerce-frontend-gamma.vercel.app/login',
-    image: MERNShop,
+    image: '/New_Portfolio/images/MERNShop.png',
     category: 'web',
     featured: true
   },
@@ -93,7 +90,7 @@ export const projects: Project[] = [
     description: 'Deep learning analysis of CIFAR10 dataset using CNN with learning rate scheduler and gradient clipping. Developed custom ResNet model using residual network fundamentals.',
     technologies: ['PyTorch', 'Computer Vision', 'Scikit-learn', 'CNN'],
     githubUrl: 'https://github.com/AdithyaSrivastava01/CIFAR10',
-    image: CIFARImage,
+    image: '/New_Portfolio/images/CIFAR_new.jpg',
     category: 'ml',
     featured: true
   }
