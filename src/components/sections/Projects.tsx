@@ -39,13 +39,21 @@ export const Projects: React.FC = () => {
     <div className="bg-white dark:bg-dark-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Project Image */}
       <div className="relative h-40 sm:h-48 lg:h-56 bg-gradient-to-br from-primary-100 to-blue-100 dark:from-primary-900 dark:to-blue-900 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-6xl opacity-20">
-            {project.category === 'ml' ? '🤖' : 
-             project.category === 'web' ? '🌐' : 
-             project.category === 'mobile' ? '📱' : '⚡'}
+        {project.image ? (
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-6xl opacity-20">
+              {project.category === 'ml' ? '🤖' : 
+               project.category === 'web' ? '🌐' : 
+               project.category === 'mobile' ? '📱' : '⚡'}
+            </div>
           </div>
-        </div>
+        )}
         {project.featured && (
           <div className="absolute top-4 left-4 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-medium">
             Featured

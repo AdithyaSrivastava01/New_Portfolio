@@ -1,4 +1,7 @@
 import { Project, Experience, Education, Skill } from '../types';
+import MedQueryAI from '../assets/images/MedQueryAI.png';
+import MERNShop from '../assets/images/MERNShop.png';
+import CIFARImage from '../assets/images/CIFAR_new.jpg';
 
 export const experiences: Experience[] = [
   {
@@ -68,8 +71,8 @@ export const projects: Project[] = [
     title: 'MedQueryAI',
     description: 'RAG-based Medical Query Assistant incorporating Pinecone for vector search, HuggingFace sentence transformers for embedding 1600 medical documents, & OpenAI API for LLM integration. Features real-time web application with Flask, achieving <2 second response times.',
     technologies: ['Python', 'Pinecone', 'LangChain', 'HuggingFace', 'Flask', 'AWS', 'GitHub Actions'],
-    githubUrl: 'https://github.com/AdithyaSrivastava01/MedQueryAI',
-    image: '/projects/medquery.jpg',
+    githubUrl: 'https://github.com/AdithyaSrivastava01/Medical_Care',
+    image: MedQueryAI,
     category: 'ml',
     featured: true
   },
@@ -78,9 +81,9 @@ export const projects: Project[] = [
     title: 'MERN Shop',
     description: 'Full-stack e-commerce platform using the MERN stack with Redux Toolkit for global state management & Material UI for responsive interface. Features optimized product catalog, order management system, and JWT authentication.',
     technologies: ['JavaScript', 'MongoDB', 'Express.js', 'React', 'Node.js', 'Redux', 'JWT', 'Material UI'],
-    githubUrl: 'https://github.com/AdithyaSrivastava01/MERN-Shop',
-    liveUrl: 'https://mern-shop-demo.com',
-    image: '/projects/mern-shop.jpg',
+    githubUrl: 'https://github.com/AdithyaSrivastava01/MERN-Ecommerce',
+    liveUrl: 'https://mern-ecommerce-frontend-gamma.vercel.app/login',
+    image: MERNShop,
     category: 'web',
     featured: true
   },
@@ -90,7 +93,7 @@ export const projects: Project[] = [
     description: 'Deep learning analysis of CIFAR10 dataset using CNN with learning rate scheduler and gradient clipping. Developed custom ResNet model using residual network fundamentals.',
     technologies: ['PyTorch', 'Computer Vision', 'Scikit-learn', 'CNN'],
     githubUrl: 'https://github.com/AdithyaSrivastava01/CIFAR10',
-    image: '/projects/cifar10.jpg',
+    image: CIFARImage,
     category: 'ml',
     featured: true
   }
