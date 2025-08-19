@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import { Button } from '../ui/Button';
+import profileImage from '../../assets/images/about_profile.webp';
 
 export const Hero: React.FC = () => {
   const scrollToContact = () => {
@@ -153,12 +154,14 @@ export const Hero: React.FC = () => {
             <div className="relative">
               <motion.div
                 className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary-400 to-blue-600 p-2"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <div className="w-full h-full rounded-full bg-white dark:bg-dark-800 p-3 sm:p-4">
                   <img
-                    src="/profile.jpg"
+                    src={profileImage}
                     alt="Adithya Srivastava"
                     className="w-full h-full object-cover rounded-full"
                   />

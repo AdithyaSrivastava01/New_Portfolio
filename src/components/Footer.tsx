@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Software Engineer passionate about machine learning and building innovative solutions. 
-              Currently pursuing MS in Computer Science at USC.
+              Currently pursuing MS in Computer Engineering at USC.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (

@@ -37,17 +37,20 @@ export const About: React.FC = () => {
     {
       icon: <Award className="w-6 h-6" />,
       title: "DAAD WISE'23 Scholar",
-      description: "Awarded prestigious DAAD WISE 2023 scholarship by the German organization DAAD"
+      description: "Awarded prestigious DAAD WISE 2023 scholarship by the German organization DAAD",
+      link: null
     },
     {
       icon: <Code2 className="w-6 h-6" />,
-      title: "LeetCode Expert",
-      description: "Solved 800+ data structures and algorithms questions across coding platforms"
+      title: "LeetCode Streak",
+      description: "Solved 800+ data structures and algorithms questions across coding platforms",
+      link: "https://leetcode.com/u/Adithya_01/"
     },
     {
       icon: <Brain className="w-6 h-6" />,
       title: "ML Research",
-      description: "Published research in ECG signal processing and medical imaging analysis"
+      description: "Published research in medical imaging analysis to detect Malarial Parasite",
+      link: "https://www.taylorfrancis.com/chapters/edit/10.1201/9781003393580-57/deep-learning-driven-automated-malaria-parasite-detection-thin-blood-smears-aryan-verma-sejal-mansoori-adithya-srivastava-priyanka-rathee-nagendra-pratap-singh"
     }
   ];
 
@@ -75,11 +78,11 @@ export const About: React.FC = () => {
             <motion.div variants={itemVariants}>
               <div className="space-y-6">
                 <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  I'm a <span className="font-semibold text-primary-600 dark:text-primary-400">Computer Science graduate student</span> at USC with a profound passion for machine learning and software engineering. With experience spanning from medical imaging AI to full-stack development, I strive to create solutions that transcend the boundaries of mere code.
+                  I'm a <span className="font-semibold text-primary-600 dark:text-primary-400">graduate student</span> at USC with a profound passion for machine learning and software engineering. With experience spanning from medical imaging AI to full-stack development, I strive to create solutions that transcend the boundaries of mere code.
                 </p>
                 
                 <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Currently pursuing my Master's in Computer Science at USC, I've had the privilege of working on cutting-edge projects in <span className="font-semibold text-primary-600 dark:text-primary-400">machine learning, NLP, and distributed systems</span>. My research experience includes developing AI-powered ECG monitoring systems and analyzing social media sentiment for election narratives.
+                  Currently pursuing my Master's in Computer Engineering at USC, I've had the privilege of working on cutting-edge projects in <span className="font-semibold text-primary-600 dark:text-primary-400">machine learning, NLP, and distributed systems</span>. My research experience includes developing AI-powered ECG monitoring systems and analyzing social media sentiment for election narratives.
                 </p>
 
                 <div className="bg-white dark:bg-dark-900 p-4 sm:p-6 rounded-xl shadow-md">
@@ -164,26 +167,40 @@ export const About: React.FC = () => {
                   Key Achievements
                 </h3>
                 <div className="space-y-4">
-                  {achievements.map((achievement, index) => (
-                    <motion.div
-                      key={index}
-                      className="bg-white dark:bg-dark-900 p-3 sm:p-4 rounded-lg shadow-md flex items-start gap-3 sm:gap-4"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="p-2 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400 flex-shrink-0">
-                        {achievement.icon}
-                      </div>
-                      <div className="min-w-0">
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm sm:text-base">
-                          {achievement.title}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          {achievement.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
+                  {achievements.map((achievement, index) => {
+                    const Component = achievement.link ? motion.a : motion.div;
+                    const linkProps = achievement.link ? {
+                      href: achievement.link,
+                      target: "_blank",
+                      rel: "noopener noreferrer"
+                    } : {};
+
+                    return (
+                      <Component
+                        key={index}
+                        className={`bg-white dark:bg-dark-900 p-3 sm:p-4 rounded-lg shadow-md flex items-start gap-3 sm:gap-4 ${
+                          achievement.link ? 'cursor-pointer hover:shadow-lg' : ''
+                        }`}
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.2 }}
+                        {...linkProps}
+                      >
+                        <div className="p-2 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400 flex-shrink-0">
+                          {achievement.icon}
+                        </div>
+                        <div className="min-w-0">
+                          <h4 className={`font-semibold text-gray-900 dark:text-white mb-1 text-sm sm:text-base ${
+                            achievement.link ? 'group-hover:text-primary-600 dark:group-hover:text-primary-400' : ''
+                          }`}>
+                            {achievement.title}
+                          </h4>
+                          <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed">
+                            {achievement.description}
+                          </p>
+                        </div>
+                      </Component>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>

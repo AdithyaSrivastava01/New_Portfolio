@@ -8,7 +8,7 @@ import { Button } from '../ui/Button';
 import { useExpansion } from '../../contexts/ExpansionContext';
 
 export const Projects: React.FC = () => {
-  const { expandedProjects, toggleExpandedProject } = useExpansion();
+  const { expandedProjects, toggleExpandedProject, expandedProjectDescriptions, toggleProjectDescription } = useExpansion();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -59,9 +59,19 @@ export const Projects: React.FC = () => {
           {project.title}
         </h3>
         
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed line-clamp-3">
-          {project.description}
-        </p>
+        <div className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed">
+          <p className={expandedProjectDescriptions.includes(project.id) ? '' : 'line-clamp-3'}>
+            {project.description}
+          </p>
+          {project.description.length > 150 && (
+            <button
+              onClick={() => toggleProjectDescription(project.id)}
+              className="mt-2 text-primary-600 dark:text-primary-400 text-sm font-medium hover:underline"
+            >
+              {expandedProjectDescriptions.includes(project.id) ? 'Show less' : 'Show more'}
+            </button>
+          )}
+        </div>
 
         {/* Technologies */}
         <div className="mb-4 sm:mb-6">
