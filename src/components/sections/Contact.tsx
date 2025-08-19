@@ -48,15 +48,29 @@ export const Contact: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // Simulate API call - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Here you would typically send the email using EmailJS or your backend
-      console.log('Form data:', data);
-      
-      setSubmitStatus('success');
-      reset();
+      // Using Formspree - more reliable for CORS
+      const response = await fetch('https://formspree.io/f/mzzvlzrj', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -193,7 +207,7 @@ export const Contact: React.FC = () => {
                   Send a Message
                 </h3>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} action="https://formspree.io/f/mzzvlzrj" method="POST" className="space-y-6">
                   {/* Name */}
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -291,24 +305,42 @@ export const Contact: React.FC = () => {
                   </div>
 
                   {/* Submit Button */}
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full justify-center gap-2"
-                    size="lg"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={20} />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="flex-1 justify-center gap-2"
+                      size="lg"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send size={20} />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                    
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="flex-1 justify-center gap-2"
+                      size="lg"
+                      onClick={() => {
+                        const formData = new FormData(document.querySelector('form') as HTMLFormElement);
+                        const subject = encodeURIComponent(formData.get('subject')?.toString() || 'Contact from Portfolio');
+                        const body = encodeURIComponent(`Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\n\nMessage:\n${formData.get('message')}`);
+                        window.location.href = `mailto:adithya@usc.edu?subject=${subject}&body=${body}`;
+                      }}
+                    >
+                      <Mail size={20} />
+                      Email Directly
+                    </Button>
+                  </div>
 
                   {/* Status Messages */}
                   {submitStatus === 'success' && (
