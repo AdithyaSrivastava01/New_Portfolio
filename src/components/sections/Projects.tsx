@@ -38,13 +38,15 @@ export const Projects: React.FC = () => {
   const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => (
     <div className="bg-white dark:bg-dark-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Project Image */}
-      <div className="relative h-40 sm:h-48 lg:h-56 bg-gradient-to-br from-primary-100 to-blue-100 dark:from-primary-900 dark:to-blue-900 overflow-hidden">
+      <div className="relative h-48 bg-gradient-to-br from-primary-100 to-blue-100 dark:from-primary-900 dark:to-blue-900 overflow-hidden">
         {project.image ? (
-          <img 
-            src={project.image} 
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
+          <div className="w-full h-full flex items-center justify-center bg-white dark:bg-dark-700">
+            <img 
+              src={project.image} 
+              alt={project.title}
+              className="w-full h-full object-contain p-4 transition-transform duration-300 hover:scale-105"
+            />
+          </div>
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-6xl opacity-20">
